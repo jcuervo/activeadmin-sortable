@@ -1,5 +1,6 @@
 require 'activeadmin-sortable/version'
 require 'activeadmin'
+require 'rails/engine'
 
 module ActiveAdmin
   module Sortable
@@ -22,8 +23,14 @@ module ActiveAdmin
         end
       end
     end
-  end
 
-  ::ActiveAdmin::ResourceDSL.send(:include, Sortable::ControllerActions)
-  ::ActiveAdmin::Views::TableFor.send(:include, Sortable::TableMethods)
+    ::ActiveAdmin::ResourceDSL.send(:include, ControllerActions)
+    ::ActiveAdmin::Views::TableFor.send(:include, TableMethods)
+
+    class Engine < ::Rails::Engine
+      # Including an Engine tells Rails that this gem contains assets
+    end
+  end
 end
+
+

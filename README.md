@@ -23,6 +23,12 @@ end
 gem 'activeadmin-sortable'
 ```
 
+### Include the JavaScript in active_admin.js
+
+```javascript
+//= require activeadmin-sortable
+```
+
 ### Configure your ActiveAdmin Resource
 
 ```ruby
