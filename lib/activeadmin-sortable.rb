@@ -18,7 +18,11 @@ module ActiveAdmin
 
       def sortable_handle_column
         column '' do |resource|
-          sort_url = url_for([:sort, :admin, resource])
+          if resource.parent?
+            sort_url = url_for([:sort, :admin, parent_type, resource])
+          else
+            sort_url = url_for([:sort, :admin, resource])
+          end
           content_tag :span, HANDLE, :class => 'handle', 'data-sort-url' => sort_url
         end
       end
