@@ -18,7 +18,7 @@ module ActiveAdmin
 
       def sortable_handle_column
         column '' do |resource|
-          if resource.parent?
+          if parent?
             sort_url = url_for([:sort, :admin, parent_type, resource])
           else
             sort_url = url_for([:sort, :admin, resource])
